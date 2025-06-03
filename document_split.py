@@ -5,9 +5,14 @@ import os
 
 PDFPATH = "./files/US-constitution.pdf"
 PDFPATH = "./files/nepali-law.pdf"
+PDFPATH = "./files/Emergency_Care.pdf"
 
 
-def get_or_create_splits(cache_file="splits_cache.pkl"):
+# splits_cache => nepali-law
+# emer_splits_cache.pkl => emergency care
+
+
+def get_or_create_splits(cache_file="emer_splits_cache.pkl"):
     # Check if cache exists
     if os.path.exists(cache_file):
         print("Loading splits from cache...")
@@ -20,8 +25,8 @@ def get_or_create_splits(cache_file="splits_cache.pkl"):
     docs = loader.load()
 
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
+        chunk_size=2700,    #1000
+        chunk_overlap=400,   #200 for general
         length_function=len,
         is_separator_regex=False
     )

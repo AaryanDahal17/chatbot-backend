@@ -47,5 +47,3 @@ def search_document(query, k=5):
 # for doc in similar_docs:
 #     print(doc.page_content)
 #     print("-"*100)
-
-

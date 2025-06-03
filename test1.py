@@ -1,12 +1,13 @@
-import requests
 
-url = "http://localhost:8000/query"
+# import requests
 
-data = {
-    "query": "Explain about opening a business"
-}
+# url = "http://localhost:8000/query"
 
-response = requests.post(url, json=data)
+# data = {
+#     "query": "Explain about opening a business"
+# }
 
-print("Status Code:", response.status_code)
-print("Response JSON:", response.json())
+# response = requests.post(url, json=data)
+
+# print("Status Code:", response.status_code)
+# print("Response JSON:", response.json())

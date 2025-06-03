@@ -1,1 +1,5 @@
 .env
+test1.py
+splits_cache.pkl
+emer_splits_cache.pkl
+vector_store.py
