@@ -39,6 +39,6 @@ chain = (
 )
 
 
-resp = chain.invoke("What should i do if the person seems to be bitten by a snake")
+# resp = chain.invoke("What should i do if the person seems to be bitten by a snake")
 
-print(resp)
+# print(resp)
