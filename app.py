@@ -8,7 +8,7 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://chatbot.aaryandahal.com.np"], 
+    allow_origins=["https://chatbot.aaryandahal.com.np","https://chatbot-frontend-5fc.pages.dev"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
