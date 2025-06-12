@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from rag_chain import chain
+from rag_chain import run
 
 app = FastAPI()
 
@@ -19,7 +19,7 @@ class Query(BaseModel):
 
 @app.post("/query")
 async def process_query(query: Query):
-    response = chain.invoke(query.query)
+    response = run(query.query)
     return {"response": response}
 
 if __name__ == "__main__":

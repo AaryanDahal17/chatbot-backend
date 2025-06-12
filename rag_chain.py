@@ -1,3 +1,4 @@
+from langchain_core.messages import SystemMessage,HumanMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts import MessagesPlaceholder
 from langchain_core.runnables import RunnableLambda,RunnablePassthrough
@@ -7,7 +8,9 @@ from pinecone_db import search_document
 from langchain_groq import ChatGroq
 
 
-model = ChatGroq(model='llama3-70b-8192')
+# model = ChatGroq(model='llama3-70b-8192')
+
+model = ChatGroq(model='llama-3.3-70b-versatile')
 
 
 # prompt = ChatPromptTemplate.from_messages([
@@ -39,6 +42,31 @@ chain = (
 )
 
 
-# resp = chain.invoke("What should i do if the person seems to be bitten by a snake")
+def run(prompt):
+    resp = chain.invoke(prompt)
+    
+    msgs = [SystemMessage(content=f""" You are a medical expert, your task is to review the answer provided by the user.
+    Make sure the user's answer is correct, make some changes if required and give me the updated answer in a proper format with suitable spacing and
+    paragraphing when required. If possible, try to give a step by step answer for the question.
+    Here is the question : {prompt}
+    """),
+    
+    HumanMessage(content=resp)
+    ]
 
-# print(resp)
+    # print("CONTEXT : ")
+    # print(msgs)
+    # print()
+
+    new_resp = model.invoke(msgs)
+
+    return new_resp.content
+
+
+
+
+# our_resp = run("What to do in case of a heart attack?")
+
+# print("AI:")
+# print()
+# print(our_resp)
